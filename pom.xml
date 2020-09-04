@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.ktz.sh</groupId>
     <artifactId>base-support</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.1.0-RELEASE</version>
     <name>base-support</name>
     <description>Demo project for Spring Boot</description>
 
@@ -18,6 +18,8 @@
         <java.version>1.8</java.version>
         <lombok.version>1.18.10</lombok.version>
         <pagehelper-spring-boot-starter.version>1.2.3</pagehelper-spring-boot-starter.version>
+        <hutool.version>5.0.5</hutool.version>
+        <fastjson.version>1.2.62</fastjson.version>
     </properties>
 
     <dependencies>
@@ -50,13 +52,23 @@
             <artifactId>lombok</artifactId>
             <version>${lombok.version}</version>
         </dependency>
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+            <version>${hutool.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>${fastjson.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
         <plugins>
             <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
             </plugin>
         </plugins>
     </build>

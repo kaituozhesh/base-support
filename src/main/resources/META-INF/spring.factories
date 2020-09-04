@@ -1,2 +1,4 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  com.ktz.sh.base.config.GlobalAutoConfiguration
+  com.ktz.sh.base.config.GlobalAutoConfiguration,\
+  com.ktz.sh.base.config.InterceptorConfig,\
+  com.ktz.sh.base.config.RequestFilter
