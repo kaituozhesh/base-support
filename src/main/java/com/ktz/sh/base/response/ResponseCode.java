@@ -28,8 +28,9 @@ public enum ResponseCode {
     /** 自定义错误 **/
     CUSTOM_ERROR(999, "CUSTOM ERROR"),
     /** 刷新Token **/
-    TOKEN_REFRESH(888, "TOKEN REFRESH");
-
+    TOKEN_REFRESH(888, "TOKEN REFRESH"),
+    SIGN_EXPIRED(500, "签名已过期"),
+    SIGN_ERROR(500, "签名错误");
     private int code;
 
     private String msg;

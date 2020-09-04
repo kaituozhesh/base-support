@@ -30,7 +30,6 @@ public class GlobalExceptionHandler {
         return response;
     }
 
-
     @ExceptionHandler(value = Exception.class)
     @ResponseBody
     public ResponseData defaultErrorHandler(HttpServletRequest request, Exception e) {
