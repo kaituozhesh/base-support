@@ -1,5 +1,7 @@
 package com.ktz.sh.base.interceptor;
 
+import cn.hutool.core.util.StrUtil;
+
 import javax.servlet.ReadListener;
 import javax.servlet.ServletInputStream;
 import javax.servlet.http.HttpServletRequest;
@@ -56,7 +58,7 @@ public class RequestWrapper extends HttpServletRequestWrapper {
                 }
             }
         }
-        return sb.toString();
+        return StrUtil.isNotBlank(sb.toString()) ? sb.toString() : "{}";
     }
 
     /**
@@ -74,13 +76,13 @@ public class RequestWrapper extends HttpServletRequestWrapper {
                 byteArrayOutputStream.write(buffer, 0, len);
             }
             byteArrayOutputStream.flush();
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
         InputStream byteArrayInputStream = new ByteArrayInputStream(byteArrayOutputStream.toByteArray());
         return byteArrayInputStream;
     }
+
     @Override
     public BufferedReader getReader() throws IOException {
         return new BufferedReader(new InputStreamReader(getInputStream()));

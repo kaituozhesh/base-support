@@ -1,7 +1,9 @@
 package com.ktz.sh.base.util;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.serializer.SerializerFeature;
 import org.springframework.util.StringUtils;
 
 import java.util.HashMap;
@@ -82,6 +84,37 @@ public class JSONUtils {
             return new HashMap<>();
         }
         return JSON.parseObject(json, Map.class);
+    }
+
+    /**
+     * fastjson 1.2.44版本判断json方式
+     *
+     * @param param
+     * @return
+     */
+    public static String toJsonString44(Object param) {
+        if (param == null) {
+            return "null";
+        } else {
+            String s = JSON.toJSONString(param, SerializerFeature.WriteMapNullValue);
+            Object obj = JSON.parse(s);
+            return obj instanceof JSONObject || obj instanceof JSONArray ? s : param.toString();
+        }
+    }
+
+    /**
+     * fastjson 1.2.62版本判断json方式
+     *
+     * @param param
+     * @return
+     */
+    public static String toJsonString62(Object param) {
+        if (param == null) {
+            return "null";
+        } else {
+            String s = JSON.toJSONString(param, SerializerFeature.WriteMapNullValue);
+            return JSON.isValidObject(s) || JSON.isValidArray(s) ? s : param.toString();
+        }
     }
 
     public static JSONObject MapToJson(Map m) {
